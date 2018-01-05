@@ -1,0 +1,38 @@
+{
+  "name": "the-ballard-house",
+  "version": "1.0.0",
+  "description": "Rental House in Ballard Booking App",
+  "main": "index.js",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.12",
+    "angular": "^1.6.8",
+    "bcrypt-as-promised": "^1.1.0",
+    "boom": "^7.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "humps": "^2.0.1",
+    "jsonwebtoken": "^8.1.0",
+    "knex": "^0.14.2",
+    "npm": "^5.6.0",
+    "pg": "^7.4.1",
+    "sqlite3": "^3.1.13"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "morgan": "^1.9.0",
+    "nodemo": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "knex": "knex",
+    "start": "node ./bin/www",
+    "migrate": "knex migrate:latest",
+    "heroku-postbuild": "knex migrate:latest",
+    "nodemon": "nodemon server.js"
+  },
+  "author": "Jeff Mobley",
+  "license": "ISC",
+  "engines": {
+    "node": "7.7.1"
+  }
+}
