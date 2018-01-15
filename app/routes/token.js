@@ -9,7 +9,7 @@ const { camelizeKeys } = require('humps');
 
 const router = express.Router();
 
-router.get('/api/token', (req, res) => {
+router.get('/token', (req, res) => {
   console.log('we are at routes.token.get');
   jwt.verify(req.cookies.token, process.env.JWT_KEY, (err, _payload) => {
     if (err) {
@@ -23,13 +23,13 @@ router.get('/api/token', (req, res) => {
 
 
 
-router.post('/api/token', (req, res, next) => {
+router.post('/token', (req, res, next) => {
   console.log('we are at routes.token.post');
   console.log('req.body: ', req.body);
-  const { userName, password } = req.body;
-  console.log('userName: ', userName, 'password: ', password);
-  if (!userName || !userName.trim()) {
-    return next(boom.create(400, 'User Name must not be blank'));
+  const { email, password } = req.body;
+  console.log('email: ', email, 'password: ', password);
+  if (!email || !email.trim()) {
+    return next(boom.create(400, 'email must not be blank'));
   }
 
   if (!password || !password.trim()) {
@@ -39,7 +39,7 @@ router.post('/api/token', (req, res, next) => {
   let user;
 
   knex('users')
-    .where('user_name', userName)
+    .where('email', email)
     .first()
     .then((row) => {
       if (!row) {
@@ -75,7 +75,7 @@ router.post('/api/token', (req, res, next) => {
     });
 });
 
-router.delete('/api/token', (req, res) => {
+router.delete('/token', (req, res) => {
   res.clearCookie('token');
   res.send(true);
 });

@@ -1,0 +1,108 @@
+<md-dialog aria-label="ITS - Portal SignUp" >
+
+  <form ng-cloak novalidate name="form" ng-submit="$ctrl.signupForm()" role="form" autocomplete="off">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 class="animate-if">SignUp Form</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="$ctrl.close()">
+          <i class="material-icons">highlight_off</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content layout="row">
+
+      <div layout-padding>
+
+      </div>
+
+      <div class="md-dialog-content">
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.firstname.$dirty && form.firstname.$error.required }">
+          <label>First Name</label>
+          <input type="text" name="firstName" id="firstName" class="form-control" ng-model="$ctrl.form.firstName" autocomplete="off" required />
+          <span ng-if="form.firstName.$$dirty && form.firstName.$error.required" class="help-block">First Name is required</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.lastname.$dirty && form.lastname.$error.required }">
+          <label>Last Name</label>
+          <input type="text" name="lastName" id="lastName" class="form-control" ng-model="$ctrl.form.lastName" autocomplete="off" required />
+          <span ng-if="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last Name is required</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.address1.$dirty && form.address1.$error.required }">
+          <label>Address 1</label>
+          <input type="text" name="address1" id="address1" class="form-control" ng-model="$ctrl.form.address1" autocomplete="off" required />
+          <span ng-if="form.address1.$dirty && form.address1.$error.required" class="help-block">Address 1 is required</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.address2.$dirty && form.address2.$error.required }">
+          <label>Address 2</label>
+          <input type="text" name="address2" id="address2" class="form-control" ng-model="$ctrl.form.address2" autocomplete="off" />
+          <!-- <span ng-if="form.address2.$dirty && form.address2.$error.required" class="help-block">Address2 is required</span> -->
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.city.$dirty && form.city.$error.required }">
+          <label>City</label>
+          <input type="text" name="city" id="city" class="form-control" ng-model="$ctrl.form.city" autocomplete="off" required />
+          <span ng-if="form.city.$dirty && form.city.$error.required" class="help-block">City is required</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.state.$dirty && form.state.$error.required }">
+          <label>State</label>
+          <input type="text" minlength="2" mmaxlength="2" name="state" id="state" class="form-control" ng-model="$ctrl.form.state" autocomplete="off" required />
+          <span ng-if="form.state.$dirty && form.state.$error.required" class="help-block">State is required</span>
+          <span ng-show="form.state.$dirty && form.state.$error.minlength">State needs to be 2 characters</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.zip.$dirty && form.zip.$error.required }">
+          <label>Zip</label>
+          <input type="number" minlength="5" maxlength="5" name="zip" id="zip" class="form-control" ng-model="$ctrl.form.zip" autocomplete="off" required />
+          <span ng-if="form.zip.$dirty && form.zip.$error.required" class="help-block">Zip is required</span>
+          <span ng-show="form.zip.$dirty && form.zip.$error.minlength">Zip needs to be 5 characters</span>
+          <span ng-show="form.zip.$dirty && form.zip.$error.maxlength">Zip needs to be 5 characters</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.phone.$dirty && form.phone.$error.required }">
+          <label>Phone</label>
+          <input type="number" minlength="10" minlength="10" name="phone" id="phone" class="form-control" ng-model="$ctrl.form.phone" autocomplete="off" required />
+          <span ng-if="form.phone.$dirty && form.phone.$error.required" class="help-block">Zip is required</span>
+          <span ng-show="form.phone.$dirty && form.phone.$error.minlength">Phone needs to be 10 characters & Numbers Only</span>
+          <span ng-show="form.phone.$dirty && form.phone.$error.maxlength">Phone needs to be 10 characters & Numbers Only</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+          <label>email</label>
+          <input type="email" name="email" id="email" class="form-control" ng-model="$ctrl.form.email" autocomplete="off" required />
+          <span ng-if="form.email.$dirty && form.email.$error.required" class="help-block">email is required</span>
+          <span ng-if="form.email.$dirty && form.email.$invalid" class="help-block">email is invalid</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+          <label>Password</label>
+          <input type="password" name="password" id="password" class="form-control" ng-model="$ctrl.form.password" autocomplete="off" required />
+          <span ng-if="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </md-input-container>
+
+        <div class="form-actions">
+
+          <md-button type="submit" class="md-raised md-primary md-button md-ink-ripple animate-if" ng-click="$ctrl.signup()" ng-disabled="form.$invalid || $ctrl.form.dataLoading">
+            SignUp
+          </md-button>
+
+          <md-button class="animate-if" ng-click="$ctrl.switchToLogin()">
+            LogIn
+          </md-button>
+
+          <md-button ng-click="$ctrl.close()">
+            Cancel
+          </md-button>
+        </div>
+
+      </div>
+
+    </md-dialog-content>
+
+  </form>
+</md-dialog>

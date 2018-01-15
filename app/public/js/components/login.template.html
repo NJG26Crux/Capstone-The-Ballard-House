@@ -1,0 +1,54 @@
+<md-dialog aria-label="ITS - Portal LogIn" >
+
+  <form ng-cloak novalidate name="form" ng-submit="$ctrl.loginForm()" role="form" autocomplete="off">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 ng-if=$ctrl.logIn class="animate-if">LogIn Form</h2>
+        <h2 ng-if=!$ctrl.logIn class="animate-if">SignUp Form</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="$ctrl.close()">
+          <i class="material-icons">highlight_off</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content layout="row">
+
+      <div layout-padding>
+      </div>
+
+      <div class="md-dialog-content">
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+          <label>email</label>
+          <input type="text" name="email" id="email" class="form-control" ng-model="$ctrl.form.email" autocomplete="off" required />
+          <span ng-if="form.email.$dirty && form.email.$error.required" class="help-block">email is required</span>
+        </md-input-container>
+
+        <md-input-container class="md-block form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+          <label>Password</label>
+          <input type="password" name="password" id="password" class="form-control" ng-model="$ctrl.form.password" autocomplete="off" required />
+          <span ng-if="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </md-input-container>
+
+        <div class="form-actions">
+          <md-button class="md-raised md-primary md-button md-ink-ripple animate-if" type="submit" ng-click="$ctrl.login()" ng-disabled="form.$invalid || $ctrl.form.dataLoading" ng-if=$ctrl.logIn>
+            LogIn
+          </md-button>
+
+          <md-button class="animate-if" ng-click="$ctrl.switchToSignup()">
+
+            SignUp
+          </md-button>
+
+          <md-button ng-click="$ctrl.close()">
+            Cancel
+          </md-button>
+        </div>
+
+      </div>
+
+    </md-dialog-content>
+
+  </form>
+</md-dialog>

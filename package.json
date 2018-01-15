@@ -1,11 +1,12 @@
 {
   "name": "the-ballard-house",
   "version": "1.0.0",
-  "description": "Rental House in Ballard Booking App",
+  "description": "Rental House Booking App",
   "main": "index.js",
   "dependencies": {
     "@uirouter/angularjs": "^1.0.12",
     "angular": "^1.6.8",
+    "angular-material-data-table": "^0.10.10",
     "bcrypt-as-promised": "^1.1.0",
     "boom": "^7.1.1",
     "cookie-parser": "^1.4.3",
@@ -30,9 +31,17 @@
     "heroku-postbuild": "knex migrate:latest",
     "nodemon": "nodemon server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NJG26Crux/Capstone-The-Ballard-House.git"
+  },
   "author": "Jeff Mobley",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NJG26Crux/Capstone-The-Ballard-House/issues"
+  },
   "engines": {
     "node": "7.7.1"
-  }
+  },
+  "homepage": "https://github.com/NJG26Crux/Capstone-The-Ballard-House#readme"
 }

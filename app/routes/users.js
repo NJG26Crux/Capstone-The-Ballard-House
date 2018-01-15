@@ -26,14 +26,14 @@ const authorize = function(req, res, next) {
   });
 };
 
-router.get('/api/users/firstName', authorize, (req, res, next) => {
+router.get('/users/firstName', authorize, (req, res, next) => {
 
   const userId = req.claim.userId;
   knex('users')
     .where('id', userId)
     .then((user) => {
       if (user) {
-        console.log('@ routes.users.firstName user: ', user);
+        console.log('@ routes.users.firstName 36 user: ', user);
         // return user[0].first_name
         res.send(user)
       }
@@ -51,7 +51,7 @@ router.get('/api/users/firstName', authorize, (req, res, next) => {
     });
 });
 
-router.get('/api/users', (req, res, next) => {
+router.get('/users', (req, res, next) => {
   knex('users')
     .then((result) => {
       res.send(result)
@@ -59,7 +59,7 @@ router.get('/api/users', (req, res, next) => {
     .catch((err) => next(err))
 })
 
-router.get('/api/users/id/:id', (req, res, next) => {
+router.get('/users/id/:id', (req, res, next) => {
   knex('users')
     .where('id', req.params.id)
     .first()
@@ -75,7 +75,7 @@ router.get('/api/users/id/:id', (req, res, next) => {
     });
 });
 // ****************************************************
-router.get('/api/users/email/:email', (req, res, next) => {
+router.get('/users/email/:email', (req, res, next) => {
   console.log(req.params);
   knex('users')
     .where('users.email', req.params.email)
@@ -92,10 +92,10 @@ router.get('/api/users/email/:email', (req, res, next) => {
     });
 });
 // ****************************************************
-router.post('/api/users', (req, res, next) => {
+router.post('/users', (req, res, next) => {
   console.log('we are at routes.users.post.');
   req.body.admin = false;
-  const { firstname, lastname, address_1, address_2, city, state, zip, email, phone, admin, password, } = req.body;
+  const { first_name, last_name, address_1, address_2, city, state, zip, email, phone, admin, password, } = req.body;
   console.log('req.body: ', req.body);
   knex('users')
     .where('email', email)
@@ -108,18 +108,27 @@ router.post('/api/users', (req, res, next) => {
       return bcrypt.hash(password, 12);
     })
     .then((hashedPassword) => {
-      const { firstname, lastname, address_1, address_2, city, state, zip, email, phone, admin } = req.body;
-      // console.log('users.js 106 req.body: ', req.body);
-      // console.log('firstName: ', req.body.firstName);
-      // console.log('lastName: ', req.body.lastName);
-      // console.log('userName: ', req.body.userName);
-      // console.log('email: ', req.body.email);
-      const insertUser = { firstname, lastname, address_1, address_2, city, state, zip, email, phone, admin, hashedPassword };
+      console.log('we are at routes.users.post.then hash');
+      const { firstName, lastName, address1, address2, city, state, zip, email, phone, admin } = req.body;
+      console.log('users.js 113 req.body: ', req.body);
+      console.log('firstName: ', req.body.firstName);
+      console.log('lastName: ', req.body.lastName);
+      console.log('address1: ', req.body.address1);
+      console.log('address2: ', req.body.address2);
+      console.log('city: ', req.body.city);
+      console.log('state: ', req.body.state);
+      console.log('zip: ', req.body.zip);
+      console.log('email: ', req.body.email);
+      console.log('phone: ', req.body.phone);
+      console.log('admin: ', req.body.admin);
+
+      const insertUser = { firstName, lastName, address1, address2, city, state, zip, email, phone, admin, hashedPassword };
 
       return knex('users').insert(decamelizeKeys(insertUser), '*');
+      console.log('insertUser: ', insertUser);
     })
     .then((rows) => {
-
+      console.log('@ post user 131: ', rows);
       const user = camelizeKeys(rows[0]);
       const claim = { userId: user.id};
       const token = jwt.sign(claim, process.env.JWT_KEY, {
@@ -137,6 +146,7 @@ router.post('/api/users', (req, res, next) => {
       res.send(user);
     })
     .catch((err) => {
+      console.log('@ .catch error 149: ');
       console.log(err);
       // res.send(false);
       next(err);

@@ -8,15 +8,27 @@ function config($stateProvider, $urlRouterProvider, $locationProvider){
 
     $stateProvider
       .state({
-        component: 'root',
-        name: 'root',
+        component: 'loginMenu',
+        name: 'loginMenu',
         abstract: true,
       })
       .state({
         name: 'home',
         url: '/',
         component: 'home',
-        parent: 'root'
+        parent: 'loginMenu'
+      })
+
+      .state({
+        component: 'logoutMenu',
+        name: 'logoutMenu',
+        abstract: true,
+      })
+      .state({
+        name: 'details',
+        url: '/details',
+        component: 'details',
+        parent: 'logoutMenu'
       })
       // .state({
       //   name: 'projects',
