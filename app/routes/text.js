@@ -5,7 +5,7 @@ const router = express.Router();
 const knex = require('../../knex');
 
 router.get('/texts', (_req, res, next) => {
-  knex('texts')
+  knex('text')
     .orderBy('id')
     .then((texts) => {
       res.send(texts);
@@ -15,31 +15,76 @@ router.get('/texts', (_req, res, next) => {
     });
 });
 
-router.get('/texts/location', (req, res, next) => {
-  knex('texts')
-    .orderBy('text_location')
-    .then((texts) => {
-      if (!texts) {
+router.get('/text/location/1', (req, res, next) => {
+  knex('text')
+    .where('text.id', 1)
+    .then((text) => {
+      if (!text) {
         return next();
       }
 
-      res.send(texts);
+      res.send(text);
     })
     .catch((err) => {
       next(err);
     });
 });
 
-router.post('/texts', (req, res, next) => {
-  knex('texts')
-    // .insert({ name: req.body.name }, '*')
+router.get('/text/location/2', (req, res, next) => {
+  knex('text')
+    .where('text.id', 2)
     .then((text) => {
-      res.send(text[0]);
+      if (!text) {
+        return next();
+      }
+
+      res.send(text);
     })
     .catch((err) => {
       next(err);
     });
 });
+
+router.get('/text/location/3', (req, res, next) => {
+  knex('text')
+    .where('text.id', 3)
+    .then((text) => {
+      if (!text) {
+        return next();
+      }
+
+      res.send(text);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+router.get('/text/location/4', (req, res, next) => {
+  knex('text')
+    .where('text.id', 4)
+    .then((text) => {
+      if (!text) {
+        return next();
+      }
+
+      res.send(text);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+// router.post('/texts', (req, res, next) => {
+//   knex('texts')
+//     // .insert({ name: req.body.name }, '*')
+//     .then((text) => {
+//       res.send(text[0]);
+//     })
+//     .catch((err) => {
+//       next(err);
+//     });
+// });
 
 router.patch('/texts/:id', (req, res, next) => {
   knex('texts')
@@ -63,30 +108,30 @@ router.patch('/texts/:id', (req, res, next) => {
 });
 
 
-router.delete('/texts/:id', (req, res, next) => {
-  let text;
-
-  knex('texts')
-    .where('id', req.params.id)
-    .first()
-    .then((row) => {
-      if (!row) {
-        return next();
-      }
-
-      text = row;
-
-      return knex('text')
-        .del()
-        .where('id', req.params.id);
-    })
-    .then(() => {
-      delete text.id;
-      res.send(text);
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
+// router.delete('/texts/:id', (req, res, next) => {
+//   let text;
+//
+//   knex('texts')
+//     .where('id', req.params.id)
+//     .first()
+//     .then((row) => {
+//       if (!row) {
+//         return next();
+//       }
+//
+//       text = row;
+//
+//       return knex('text')
+//         .del()
+//         .where('id', req.params.id);
+//     })
+//     .then(() => {
+//       delete text.id;
+//       res.send(text);
+//     })
+//     .catch((err) => {
+//       next(err);
+//     });
+// });
 
 module.exports = router;

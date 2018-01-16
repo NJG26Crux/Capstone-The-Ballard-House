@@ -19,11 +19,12 @@
         .then((user) => {
           console.log('@ component.root get/firstname user: ', user.data[0]);
           if (user.data[0]) {
-            // console.log(user.data[0].first_name);
+            if (user.data[0].admin === true) {
+              $state.go('admin')
+            }
             user.data[0].hello_first_name = ('Hello ' + user.data[0].first_name);
-            // console.log(user.data[0]);
             vm.auth.user = user.data[0]
-            // console.log(auth.user)
+            $state.go('detailsTest')
           }
         })
         .catch((err) => {
@@ -65,7 +66,7 @@
     }
   }
 
-  angular.module('app').controller('login', ['$mdDialog', '$http', 'auth', '$scope', function($mdDialog, $http, auth, $scope) {
+  angular.module('app').controller('login', ['$mdDialog', '$http', 'auth', '$scope', '$state', function($mdDialog, $http, auth, $scope, $state) {
     const vm = this;
     $scope.form = {};
 
@@ -78,80 +79,27 @@
       console.log('close')
       $mdDialog.cancel();
     };
-//***************************************
-    // vm.login = function() {
-    //   $http.post('/token', vm.form).then(data => {
-    //       auth.firstName = 'Hello ' + data.data.firstName;
-    //       $mdDialog.hide();
-    //       delete vm.form;
-
-//***************************************
-          // console.log('@ login .then data: ', data);
-          // user.data[0].hello_first_name = ('Hello ' + user.data[0].first_name);
-          // console.log('user.data[0]: ', user.data[0]);
-          // vm.auth.user = user.data[0];
-          // console.log('vm.auth.user: ', vm.auth.user);
-//***************************************
-    //
-    //     },
-    //     err => {
-    //       vm.err = 'Incorect email or Password'
-    //       return err;
-    //     })
-    // };
-//***************************************
-
-
-    // vm.login = function() {
-    //   $http.post('/token', vm.form).then(data => {
-    //       console.log('@ login data: ', data);
-    //       auth.firstName = 'Hello ' + data.data.firstName; //vm.
-    //       $mdDialog.hide();
-    //       delete vm.form;
-    //     },
-    //     err => {
-    //       vm.err = 'Incorect User Name or Password'
-    //       return err;
-    //     })
-    // };
-
-    // vm.login = function() {
-    //   $http.post('/token', vm.form).then(data => {
-    //       // console.log('@ login data: ', data);
-    //       // auth.firstName = 'Hello ' + data.data.firstName; //vm.
-    //
-    //
-    //       $http.get('/users/firstName')
-    //         .then((user) => {
-    //           console.log('@ component.root login get/firstname user: ', user.data[0]);
-    //           if (user.data[0]) {
-    //             // console.log(user.data[0].first_name);
-    //             user.data[0].hello_first_name = ('Hello ' + user.data[0].first_name);
-    //             // console.log(user.data[0]);
-    //             auth.user = user.data[0] /// vm.
-    //             // console.log(auth.user)
-    //           }
-    //         })
-    //
-    //       $mdDialog.hide();
-    //       delete vm.form;
-    //
-    //     },
-    //     err => {
-    //       vm.err = 'Incorect User Name or Password'
-    //       return err;
-    //     })
-    // };
 
     vm.login = function() {
+      let userInfo = {};
       $http.post('/token', vm.form).then(data => {
         console.log('@ login data: ', data);
           $http.get('/users/firstName')
             .then((user) => {
               console.log('@ component.root login get/firstname user: ', user.data[0]);
               if (user.data[0]) {
+                userInfo = user.data[0];
+                console.log('userInfo: ', userInfo);
                 user.data[0].hello_first_name = ('Hello ' + user.data[0].first_name);
                 auth.user = user.data[0] /// vm.
+
+                console.log('userInfo.admin: ', userInfo.admin);
+                if (userInfo.admin === true) {
+                  $state.go('admin');
+                } else if (userInfo.first_name) {
+                $state.go('detailsTest');
+                }
+
               }
             })
           $mdDialog.hide();
@@ -172,6 +120,7 @@
           auth.user = user.data /// vm.
           $mdDialog.hide();
           delete vm.form;
+          $state.go('details')
         },
         err => {
           console.log('err: ', err)

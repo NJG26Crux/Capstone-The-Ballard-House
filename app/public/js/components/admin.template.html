@@ -1,0 +1,131 @@
+<main class="wrapper">
+  <div class="main">
+    <h5>Admin Page</h5>
+
+    <div>Users</div>
+    <md-table-container>
+      <table md-table md-row-select multiple  md-progress="promise"> <!-- ng-model="$ctrl.selected" -->
+        <thead md-head md-order="query.order" md-on-reorder="getUsers">
+          <tr md-row>
+            <th md-column>ID</th>
+            <th md-column>First Name</th>
+            <th md-column>Last Name</th>
+            <th md-column>email</th>
+            <th md-column>Admin</th>
+            <th md-column></th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select="email" md-select-id="email" md-auto-select ng-repeat="user in $ctrl.users">
+            <td md-cell>{{user.id}}</td>
+            <td md-cell>{{user.first_name}}</td>
+            <td md-cell>{{user.last_name}}</td>
+            <td md-cell>{{user.email}}</td>
+            <td md-cell>{{user.admin}}</td>
+            <td><i ng-click="deleteUser(user.id)" class="material-icons">delete_forever</i></td> <!-- <i ng-click="$ctrl.editUser(user.id)" class="material-icons">create</i> -->
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+    <br>
+
+    <div>Dates</div>
+    <md-table-container>
+      <table md-table md-row-select multiple  md-progress="promise">
+        <thead md-head md-order="query.order" md-on-reorder="getDates">
+          <tr md-row>
+            <th md-column>ID</th>
+            <th md-column>Start</th>
+            <th md-column>End</th>
+            <th md-column>email</th>
+            <th md-column></th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select="start" md-select-id="start" md-auto-select ng-repeat="date in $ctrl.dates">
+            <td md-cell>{{date.id}}</td>
+            <td md-cell>{{date.start}}</td>
+            <td md-cell>{{date.end}}</td>
+            <td md-cell>{{date.email}}</td>
+            <td><i ng-click="$ctrl.editDate(date.id)" class="material-icons">create</i><i ng-click="deleteDate(date.id)" class="material-icons">delete_forever</i></td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+    <br>
+
+    <div>Messages</div>
+    <md-table-container>
+      <table md-table md-row-select multiple  md-progress="promise">
+        <thead md-head md-order="query.order" md-on-reorder="getMessages">
+          <tr md-row>
+            <th md-column>ID</th>
+            <th md-column>Text</th>
+            <th md-column>From</th>
+            <th md-column>Read</th>
+            <th md-column>Urgent</th>
+            <th md-column></th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select="start" md-select-id="start" md-auto-select ng-repeat="msg in $ctrl.messages">
+            <td md-cell>{{msg.id}}</td>
+            <td md-cell>{{msg.text}}</td>
+            <td md-cell>{{msg.email}}</td>
+            <td md-cell>{{msg.read}}</td>
+            <td md-cell>{{msg.urgent}}</td>
+            <td><i ng-click="$ctrl.editMessage(msg.id)" class="material-icons">create</i></td> <!-- <i ng-click="deleteMessage(msg.id)" class="material-icons">delete_forever</i> -->
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+    <br>
+
+    <div>Text</div>
+    <md-table-container>
+      <table md-table md-row-select multiple  md-progress="promise">
+        <thead md-head md-order="query.order" md-on-reorder="getText">
+          <tr md-row>
+            <th md-column>ID</th>
+            <th md-column>Text</th>
+            <th md-column>Location</th>
+            <th md-column></th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select="id" md-select-id="id" md-auto-select ng-repeat="text in $ctrl.texts">
+            <td md-cell>{{text.id}}</td>
+            <td md-cell>{{text.text}}</td>
+            <td md-cell>{{text.text_location}}</td>
+            <td><i ng-click="$ctrl.editMessage(text.id)" class="material-icons">create</i></td> <!-- <i ng-click="deleteMessage(text.id)" class="material-icons">delete_forever</i> -->
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+    <br>
+
+    <div>Pictures</div>
+    <md-table-container>
+      <table md-table md-row-select multiple  md-progress="promise">
+        <thead md-head md-order="query.order" md-on-reorder="getPictures">
+          <tr md-row>
+            <th md-column>ID</th>
+            <th md-column>url</th>
+            <th md-column>Location</th>
+            <th md-column></th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row md-select="id" md-select-id="id" md-auto-select ng-repeat="pic in $ctrl.pictures">
+            <td md-cell>{{pic.id}}</td>
+            <td md-cell>{{pic.url}}</td>
+            <td md-cell>{{pic.picture_location}}</td>
+            <td><i ng-click="$ctrl.editMessage(text.id)" class="material-icons">create</i></td> <!-- <i ng-click="deleteMessage(text.id)" class="material-icons">delete_forever</i> -->
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+    <br>
+
+  </div>
+</main>

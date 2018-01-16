@@ -14,63 +14,42 @@ function config($stateProvider, $urlRouterProvider, $locationProvider){
       })
       .state({
         name: 'home',
-        url: '/',
+        url: '/home',
         component: 'home',
         parent: 'loginMenu'
       })
-
       .state({
         component: 'logoutMenu',
         name: 'logoutMenu',
         abstract: true,
       })
       .state({
-        name: 'details',
+        name: 'detailsTest',
         url: '/details',
-        component: 'details',
+        component: 'detailsTest',
         parent: 'logoutMenu'
       })
-      // .state({
-      //   name: 'projects',
-      //   url: '/projects',
-      //   component: 'projects',
-      //   parent: 'root'
-      // })
-      // .state({
-      //   name: 'project',
-      //   url: '/projects/:id',
-      //   component: 'project',
-      //   parent: 'root'
-      // })
-      // .state({
-      //   name: 'projectAdmin',
-      //   url: '/projects/:id/admin',
-      //   component: 'projectAdmin',
-      //   parent: 'root'
-      // })
-      // .state({
-      //   name: 'projectCtbr',
-      //   url: '/projects/:id',
-      //   component: 'projectCtbr',
-      //   parent: 'root'
-      // })
-      // .state({
-      //   name: 'newProject',
-      //   url: '/projects/newProject',
-      //   component: 'newProject',
-      //   parent: 'root'
-      // })
-      // .state({
-      //   name: 'newProject2',
-      //   url: '/projects/newProject2',
-      //   component: 'newProject2',
-      //   parent: 'root'
-      // })
-      // .state({
-      //   name: 'newProject3',
-      //   url: '/projects/newProject3',
-      //   component: 'newProject3',
-      //   parent: 'root'
-      // })
+      .state({
+        component: 'logoutMenuCal',
+        name: 'logoutMenuCal',
+        abstract: true,
+      })
+      .state({
+        name: 'calendar',
+        url: '/calendar',
+        component: 'calendar',
+        parent: 'logoutMenuCal'
+      })
+      .state({
+        component: 'logoutMenuAdmin',
+        name: 'logoutMenuAdmin',
+        abstract: true,
+      })
+      .state({
+        name: 'admin',
+        url: '/admin',
+        component: 'admin',
+        parent: 'logoutMenuAdmin'
+      })
 
   }
