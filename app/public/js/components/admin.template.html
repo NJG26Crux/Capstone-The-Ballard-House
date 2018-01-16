@@ -22,7 +22,7 @@
             <td md-cell>{{user.last_name}}</td>
             <td md-cell>{{user.email}}</td>
             <td md-cell>{{user.admin}}</td>
-            <td><i ng-click="deleteUser(user.id)" class="material-icons">delete_forever</i></td> <!-- <i ng-click="$ctrl.editUser(user.id)" class="material-icons">create</i> -->
+            <td><i ng-click="$ctrl.deleteUser(user.id)" class="material-icons">delete_forever</i></td> <!-- <i ng-click="$ctrl.editUser(user.id)" class="material-icons">create</i> -->
           </tr>
         </tbody>
       </table>
@@ -47,7 +47,7 @@
             <td md-cell>{{date.start}}</td>
             <td md-cell>{{date.end}}</td>
             <td md-cell>{{date.email}}</td>
-            <td><i ng-click="$ctrl.editDate(date.id)" class="material-icons">create</i><i ng-click="deleteDate(date.id)" class="material-icons">delete_forever</i></td>
+            <td><i ng-click="$ctrl.editDate(date.id)" class="material-icons">create</i><i ng-click="$ctrl.deleteDate(date.id)" class="material-icons">delete_forever</i></td>
           </tr>
         </tbody>
       </table>
@@ -97,7 +97,7 @@
             <td md-cell>{{text.id}}</td>
             <td md-cell>{{text.text}}</td>
             <td md-cell>{{text.text_location}}</td>
-            <td><i ng-click="$ctrl.editMessage(text.id)" class="material-icons">create</i></td> <!-- <i ng-click="deleteMessage(text.id)" class="material-icons">delete_forever</i> -->
+            <td><i ng-click="$ctrl.editText(text.id)" class="material-icons">create</i></td> <!-- <i ng-click="deleteMessage(text.id)" class="material-icons">delete_forever</i> -->
           </tr>
         </tbody>
       </table>
@@ -120,7 +120,7 @@
             <td md-cell>{{pic.id}}</td>
             <td md-cell>{{pic.url}}</td>
             <td md-cell>{{pic.picture_location}}</td>
-            <td><i ng-click="$ctrl.editMessage(text.id)" class="material-icons">create</i></td> <!-- <i ng-click="deleteMessage(text.id)" class="material-icons">delete_forever</i> -->
+            <td><i ng-click="$ctrl.editMPicture(pic.id)" class="material-icons">create</i></td> <!-- <i ng-click="deleteMessage(text.id)" class="material-icons">delete_forever</i> -->
           </tr>
         </tbody>
       </table>

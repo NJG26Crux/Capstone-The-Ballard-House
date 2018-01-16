@@ -44,5 +44,30 @@
         })
 
     }
+
+    vm.deleteUser = function(id) {
+      // patch email or hashed password only? ******************
+    }
+
+    // vm.editDate = function(id) {
+    //   // patch dates ??? *****************
+    // }
+
+    // vm.deleteDate = function(id) {
+    //   // delete dates snd user_dates ******************
+    // }
+
+    // vm.editMessage = function(id) {
+    //   // patch read status ??? *******************
+    // }
+
+    vm.editText = function(id) {
+      // patch text ***********************
+    }
+
+    vm.editMPicture = function(id) {
+      // patch url **********************
+    }
+
   }
 }());
