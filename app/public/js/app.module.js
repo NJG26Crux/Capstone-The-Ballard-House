@@ -14,7 +14,7 @@ function config($stateProvider, $urlRouterProvider, $locationProvider){
       })
       .state({
         name: 'home',
-        url: '/home',
+        url: '/',
         component: 'home',
         parent: 'loginMenu'
       })

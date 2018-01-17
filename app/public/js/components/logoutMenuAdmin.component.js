@@ -22,10 +22,12 @@
             user.data[0].hello_first_name = ('Hello ' + user.data[0].first_name);
             vm.auth.user = user.data[0]
           } else {
-            $state.go('home') // ************ does not work ***************
+            console.log('/users/firstName: Has Error');
+            $state.go('home')
           }
         })
         .catch((err) => {
+          $state.go('home')
         });
     }
 
@@ -36,7 +38,7 @@
         vm.auth.firstName = '';
         vm.auth.err = '';
       });
-      $state.go('home') // ************ does not work ***************
+      $state.go('home')
     }
   }
 

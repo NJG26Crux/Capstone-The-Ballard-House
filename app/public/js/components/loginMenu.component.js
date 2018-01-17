@@ -120,7 +120,7 @@
           auth.user = user.data /// vm.
           $mdDialog.hide();
           delete vm.form;
-          $state.go('details')
+          $state.go('detailsTest')
         },
         err => {
           console.log('err: ', err)

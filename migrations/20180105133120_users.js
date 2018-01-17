@@ -10,7 +10,7 @@ exports.up = function(knex) {
     table.string('city').notNullable();
     table.string('state').notNullable();
     table.integer('zip').notNullable();
-    table.integer('phone').notNullable();
+    table.string('phone').notNullable();
     table.string('email').unique().notNullable();
     table.boolean('admin').notNullable();
     table.specificType('hashed_password', 'char(60)').notNullable();

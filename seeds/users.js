@@ -12,7 +12,7 @@ exports.seed = function(knex) {
         city: 'Seattle',
         state: 'WA',
         zip: 98107,
-        phone: 1234567890,
+        phone: '1234567890',
         email: 'test@test.com',
         admin: 'true',
         hashed_password:
@@ -30,7 +30,7 @@ exports.seed = function(knex) {
         city: 'Seattle',
         state: 'WA',
         zip: 98107,
-        phone: 1234567890,
+        phone: '1234567890',
         email: 'test2@test.com',
         admin: 'false',
         hashed_password:
@@ -48,7 +48,7 @@ exports.seed = function(knex) {
         city: 'Seattle',
         state: 'WA',
         zip: 98107,
-        phone: 1234567890,
+        phone: '1234567890',
         email: 'test3@test.com',
         admin: 'false',
         hashed_password:
