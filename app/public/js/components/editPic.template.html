@@ -1,0 +1,42 @@
+<md-dialog aria-label="ITS - Portal LogIn" >
+
+  <form ng-cloak novalidate name="form" ng-submit="$ctrl.loginForm()" role="form" autocomplete="off">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 ng-if=$ctrl.logIn class="animate-if">Edit Pictures</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="$ctrl.closeEdit()">
+          <i class="material-icons">highlight_off</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content layout="row">
+
+      <div layout-padding>
+      </div>
+
+      <div class="md-dialog-content">
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.picUrl.$dirty && form.picUrl.$error.required }">
+          <label>picUrl</label>
+          <input type="picUrl" name="picUrl" id="picUrl" class="form-control" ng-model="$ctrl.picUrl" autocomplete="off" required />
+          <span ng-if="form.picUrl.$dirty && form.picUrl.$error.required" class="help-block">Text is required</span>
+        </md-input-container>
+
+        <div class="form-actions">
+          <md-button class="md-raised md-primary md-button md-ink-ripple animate-if" type="submit" ng-click="$ctrl.submitEditPic($ctrl.picId, $ctrl.pickUrl)">
+            Update
+          </md-button>
+
+          <md-button ng-click="$ctrl.closeEdit()">
+            Cancel
+          </md-button>
+        </div>
+
+      </div>
+
+    </md-dialog-content>
+
+  </form>
+</md-dialog>

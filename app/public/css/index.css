@@ -22,6 +22,10 @@ footer {
   padding-bottom: 20px;
 }
 
+.topMargin {
+  margin-top: 50px;
+}
+
 .Site {
   display: flex;
   min-height: 100vh;

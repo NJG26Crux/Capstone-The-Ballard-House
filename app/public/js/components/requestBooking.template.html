@@ -1,0 +1,42 @@
+<md-dialog aria-label="ITS - Portal LogIn" >
+
+  <form ng-cloak novalidate name="form" ng-submit="$ctrl.requestBooking()" role="form" autocomplete="off">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 ng-if=$ctrl.logIn class="animate-if">Edit Text</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="$ctrl.closeEdit()">
+          <i class="material-icons">highlight_off</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content layout="row">
+
+      <div layout-padding>
+      </div>
+
+      <div class="md-dialog-content">
+
+        <md-input-container class="md-block form-group animate-if" ng-class="{ 'has-error': form.requestMsg.$dirty && form.requestMsg.$error.required }">
+          <label>Text</label>
+          <textarea type="requestMsg" name="requestMsg" id="requestMsg" class="form-control" ng-model="$ctrl.requestMsg" autocomplete="off" required></textarea>
+          <span ng-if="form.requestMsg.$dirty && form.requestMsg.$error.required" class="help-block">Text is required</span>
+        </md-input-container>
+
+        <div class="form-actions">
+          <md-button class="md-raised md-primary md-button md-ink-ripple animate-if" type="submit" ng-click="$ctrl.requestBooking()">
+            Send
+          </md-button>
+
+          <md-button ng-click="$ctrl.closeEdit()">
+            Cancel
+          </md-button>
+        </div>
+
+      </div>
+
+    </md-dialog-content>
+
+  </form>
+</md-dialog>

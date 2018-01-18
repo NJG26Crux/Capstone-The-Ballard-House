@@ -13,7 +13,9 @@ exports.up = function(knex) {
     table.string('phone').notNullable();
     table.string('email').unique().notNullable();
     table.boolean('admin').notNullable();
-    table.specificType('hashed_password', 'char(60)').notNullable();
+    table.boolean('locked').notNullable();
+    table.specificType('hashed_password', 'char(60)'); //.notNullable()
+    table.specificType('oldHP', 'char(60)');  //.notNullable()
     table.timestamps(true, true);
   });
 };

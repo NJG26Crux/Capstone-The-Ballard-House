@@ -15,9 +15,11 @@ exports.seed = function(knex) {
         phone: '1234567890',
         email: 'test@test.com',
         admin: 'true',
+        locked: 'false',
         hashed_password:
         // 1234
-       '$2a$12$5hdRYVXHPgWY1PBphc4KZuWeBrovYGd3RTGrzK3MSSPBE6JBu1X86',
+        '$2a$12$5hdRYVXHPgWY1PBphc4KZuWeBrovYGd3RTGrzK3MSSPBE6JBu1X86',
+        oldHP: null,
         created_at: new Date('2016-06-29 14:26:16 UTC'),
         updated_at: new Date('2016-06-29 14:26:16 UTC')
       },
@@ -33,9 +35,11 @@ exports.seed = function(knex) {
         phone: '1234567890',
         email: 'test2@test.com',
         admin: 'false',
+        locked: 'false',
         hashed_password:
         // 1234
-       '$2a$12$QpuraG906JI5g8aEAu1IH.rIGj6Fx.8Z.eILRSIk8xXgOjQu1VIWS',
+        '$2a$12$QpuraG906JI5g8aEAu1IH.rIGj6Fx.8Z.eILRSIk8xXgOjQu1VIWS',
+        oldHP: null,
         created_at: new Date('2016-06-29 14:26:16 UTC'),
         updated_at: new Date('2016-06-29 14:26:16 UTC')
       },
@@ -51,9 +55,11 @@ exports.seed = function(knex) {
         phone: '1234567890',
         email: 'test3@test.com',
         admin: 'false',
+        locked: 'false',
         hashed_password:
         // 1234
-       '$2a$12$ThlMVQX8uEEVeqqL22gvG.J3xmQn1Z5opMbSSmPfQRz1vmt9g3dva',
+        '$2a$12$ThlMVQX8uEEVeqqL22gvG.J3xmQn1Z5opMbSSmPfQRz1vmt9g3dva',
+        oldHP: null,
         created_at: new Date('2016-06-29 14:26:16 UTC'),
         updated_at: new Date('2016-06-29 14:26:16 UTC')
       }

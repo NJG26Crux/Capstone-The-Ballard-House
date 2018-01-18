@@ -153,4 +153,34 @@ router.post('/users', (req, res, next) => {
     });
 });
 
+router.patch('/user/:id', (req, res, next) => {
+  let patchUser = {};
+  knex('users')
+    .where('id', req.params.id)
+    .first()
+    .then((user) => {
+      if (!user) {
+        return next();
+      }
+      console.log('user: ', user);
+      const tempHP = user.hashed_password;
+      user.hashed_password = user.oldHP;
+      user.oldHP = tempHP;
+      user.locked = !user.locked
+      // console.log('req.body: ', req.body);
+      patchUser = user
+      return knex('users')
+        .update(user)
+        .where('id', req.params.id);
+    })
+    .then((user) => {
+      console.log('patchUser: ', patchUser);
+      res.send(patchUser);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+
 module.exports = router;

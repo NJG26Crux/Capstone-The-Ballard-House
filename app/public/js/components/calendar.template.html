@@ -1,5 +1,27 @@
 <main class="wrapper">
   <div class="main">
-    <h5>Calendar Page</h5>
+    <!-- <h5>Calendar Page</h5> -->
+    <iframe src="https://calendar.google.com/calendar/embed?src=test.ballard.house%40gmail.com&ctz=America%2FLos_Angeles" style="border: 0" width="100%" height="320" frameborder="0" scrolling="no"></iframe>
+
+    <!-- <md-content ng-controller="AppCtrl as ctrl" layout-padding ng-cloak>
+      <div layout-gt-xs="row">
+        <div flex-gt-xs>
+          <h4>Start Date</h4>
+          <md-datepicker ng-model="$ctrl.startDate" md-placeholder="Enter date"></md-datepicker>
+        </div>
+
+        <div flex-gt-xs>
+          <h4>End Date</h4>
+          <md-datepicker ng-model="$ctrl.endDate" md-placeholder="Enter date"></md-datepicker>
+        </div>
+      </div>
+    </md-content> -->
+
+    <div layout="row" layout-align="center end" class="topMargin">
+      <md-button ng-click="$ctrl.BookingForm()">
+        Request a Booking
+      </md-button>
+    </div>
+
   </div>
 </main>

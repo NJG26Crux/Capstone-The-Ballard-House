@@ -17,6 +17,21 @@ router.get('/messages', (_req, res, next) => {
     });
 });
 
+router.get('/message/', (_req, res, next) => {
+  knex.from('messages')
+    // .where('id', req.params.id)
+    // .first()
+    // .innerJoin('user_messages', 'messages.id', '=',  'user_messages.message_id')
+    // .innerJoin('users', 'users.id', '=',  'user_messages.user_id')
+    .orderBy('messages.id')
+    .then((messages) => {
+      res.send(messages);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 // router.get('/messages/unread', (req, res, next) => {
 //   knex('messages')
 //     .where('read', false)
@@ -46,7 +61,9 @@ router.post('/messages', (req, res, next) => {
     });
 });
 
-router.patch('/messages/:id', (req, res, next) => {
+router.patch('/message/:id', (req, res, next) => {
+  let patchMessage = {};
+  console.log('req.body: ', req.body);
   knex('messages')
     .where('id', req.params.id)
     .first()
@@ -55,12 +72,16 @@ router.patch('/messages/:id', (req, res, next) => {
         return next();
       }
 
+      console.log('b4 message: ', message);
+      message.read = !message.read;
+      patchMessage = message
       return knex('messages')
-        .update(req.body)
+        .update(message)
         .where('id', req.params.id);
     })
-    .then((message) => {
-      res.send(message[0]);
+    .then((msg) => {
+      console.log('patchMessage: ', patchMessage);
+      res.send(patchMessage);
     })
     .catch((err) => {
       next(err);

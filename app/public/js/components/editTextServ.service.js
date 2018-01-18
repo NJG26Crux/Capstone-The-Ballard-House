@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .service('auth', function () {
+    .service('editTextServ', function () {
       const vm = this;
       vm.text = {};
     });
