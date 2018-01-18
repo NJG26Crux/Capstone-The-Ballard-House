@@ -166,33 +166,4 @@
 
   }])
 
-  angular.module('app').controller('editMsg', ['$mdDialog', '$http', '$scope', 'msg', function($mdDialog, $http, $scope, msg) { //'auth', '$scope', '$state', - , auth, $scope, $state -  'editTextServ', - , editTextServ
-    const vm = this;
-    console.log('msg: ', msg);
-
-    vm.closeEdit = function() {
-      console.log('close')
-      $mdDialog.cancel();
-    };
-
-    vm.read = msg[0].read;
-    vm.urgent = msg[0].urgent;
-    console.log('vm: ', vm);
-    vm.Id = msg[0].id;
-    vm.submitEditMsg = function(id){
-      msg[0].read = !msg[0].read;
-      // msg[0].urgent = vm.urgent;
-      console.log('vm: ', vm);
-      console.log('@ submitEditMsg');
-      console.log('msg[0]: ', msg[0]);
-      $http.patch('/message/' + id, msg[0])
-        .then(msg => {
-          console.log('.then msg: ', msg)
-          $mdDialog.hide();
-          delete vm.form;
-        })
-    }
-
-  }])
-
 }());

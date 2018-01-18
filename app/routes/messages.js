@@ -50,9 +50,12 @@ router.get('/message/', (_req, res, next) => {
 // });
 
 // ********************************* post messages need to chain a post user_messages post *******************
-router.post('/messages', (req, res, next) => {
+router.post('/message', (req, res, next) => {
+  console.log('@ post req.body: ', req.body);
+  let postMsg = {};
   knex('messages')
     // .insert({ name: req.body.name }, '*')
+    // .insert(req.body , '*')
     .then((message) => {
       res.send(message[0]);
     })

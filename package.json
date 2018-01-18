@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "dotenv": "^4.0.0",
+    "foreman": "^2.0.0",
     "morgan": "^1.9.0",
     "nodemo": "^1.0.0"
   },
@@ -31,6 +32,7 @@
     "start": "node ./bin/www",
     "migrate": "knex migrate:latest",
     "heroku-postbuild": "knex migrate:latest",
+    "nf": "nf start",
     "nodemon": "nodemon server.js"
   },
   "repository": {
@@ -43,7 +45,7 @@
     "url": "https://github.com/NJG26Crux/Capstone-The-Ballard-House/issues"
   },
   "engines": {
-    "node": "7.7.1"
+    "node": "8.8.1"
   },
   "homepage": "https://github.com/NJG26Crux/Capstone-The-Ballard-House#readme"
 }
